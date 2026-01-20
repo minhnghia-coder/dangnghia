@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đặng Minh Nghĩa - Penetration Tester Portfolio</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #667eea;
+            --secondary: #764ba2;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --accent: #00d4ff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--dark);
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .floating-shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .shape1 {
+            width: 300px;
+            height: 300px;
+            background: var(--primary);
+            top: -100px;
+            left: -100px;
+            animation-delay: 0s;
+        }
+
+        .shape2 {
+            width: 200px;
+            height: 200px;
+            background: var(--accent);
+            top: 50%;
+            right: -50px;
+            animation-delay: 5s;
+        }
+
+        .shape3 {
+            width: 250px;
+            height: 250px;
+            background: var(--secondary);
+            bottom: -100px;
+            left: 30%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-50px) rotate(180deg); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        nav.scrolled {
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 50px;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4em;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: slideDown 1s ease-out;
+        }
+
+        .hero .subtitle {
+            font-size: 1.8em;
+            color: var(--accent);
+            margin-bottom: 20px;
+            animation: slideDown 1s ease-out 0.2s backwards;
+        }
+
+        .hero .description {
+            font-size: 1.1em;
+            color: #ccc;
+            margin-bottom: 30px;
+            line-height: 1.8;
+            animation: slideDown 1s ease-out 0.4s backwards;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            animation: slideDown 1s ease-out 0.6s backwards;
+        }
+
+        .btn {
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1em;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #fff;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.6);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--accent);
+            color: var(--accent);
+        }
+
+        .btn-outline:hover {
+            background: var(--accent);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        .contact-icons {
+            margin-top: 40px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            animation: slideDown 1s ease-out 0.8s backwards;
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .contact-icon:hover {
+            background: var(--accent);
+            transform: scale(1.1) rotate(10deg);
+        }
+
+        /* Sections */
+        .section {
+            min-height: 100vh;
+            padding: 100px 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .skill-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0,212,255,0.2);
+        }
+
+        .skill-card h3 {
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-size: 1.5em;
+        }
+
+        .skill-card ul {
+            list-style: none;
+        }
+
+        .skill-card li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            opacity: 0.8;
+        }
+
+        .skill-card li:last-child {
+            border-bottom: none;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding: 50px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary), var(--accent));
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+        }
+
+        .timeline-content {
+            width: 45%;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+        }
+
+        .timeline-content:hover {
+            border-color: var(--accent);
+            transform: scale(1.02);
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 4px solid var(--dark);
+            z-index: 2;
+        }
+
+        .timeline-content h3 {
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        .timeline-date {
+            color: #888;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        /* Projects Grid */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .project-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent);
+            box-shadow: 0 20px 40px rgba(0,212,255,0.3);
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            padding: 30px;
+        }
+
+        .project-header h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .project-body {
+            padding: 30px;
+        }
+
+        .project-body ul {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .project-body li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            opacity: 0.9;
+        }
+
+        .project-body li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .tech-tag {
+            background: rgba(0,212,255,0.2);
+            color: var(--accent);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+        }
+
+        .project-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: var(--accent);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .project-link:hover {
+            transform: translateX(5px);
+        }
+
+        /* Contact Section */
+        .contact-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .contact-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .contact-card:hover {
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        .contact-card i {
+            font-size: 2.5em;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .contact-card a {
+            color: #fff;
+            text-decoration: none;
+            word-break: break-all;
+        }
+
+        /* Scroll Progress */
+        .scroll-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            z-index: 9999;
+            transition: width 0.1s;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu {
+            display: none;
+            font-size: 1.5em;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .hero .subtitle {
+                font-size: 1.3em;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                flex-direction: row !important;
+                padding-left: 60px;
+            }
+
+            .timeline-content {
+                width: 100%;
+            }
+
+            .timeline-dot {
+                left: 20px;
+            }
+
+            .projects-grid,
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-container {
+                padding: 0 20px;
+            }
+
+            .section {
+                padding: 80px 20px;
+            }
+        }
+
+        /* Scroll to top button */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s;
+            z-index: 1000;
+        }
+
+        .scroll-top.visible {
+            opacity: 1;
+        }
+
+        .scroll-top:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="floating-shape shape1"></div>
+        <div class="floating-shape shape2"></div>
+        <div class="floating-shape shape3"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">DMN</div>
+            <ul class="nav-links">
+                <li><a href="#home">Trang chủ</a></li>
+                <li><a href="#about">Về tôi</a></li>
+                <li><a href="#skills">Kỹ năng</a></li>
+                <li><a href="#experience">Kinh nghiệm</a></li>
+                <li><a href="#projects">Dự án</a></li>
+                <li><a href="#contact">Liên hệ</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Đặng Minh Nghĩa</h1>
+            <div class="subtitle"><i class="fas fa-shield-alt"></i> Penetration Tester</div>
+            <p class="description">
+                Kỹ sư phần mềm chuyển hướng sang Application Security với kinh nghiệm thực chiến 
+                trong phát triển web và hệ thống doanh nghiệp. Đang nghiên cứu chuyên sâu về 
+                Penetration Testing và Web Application Security.
+            </p>
+            <div class="cta-buttons">
+                <a href="#projects" class="btn btn-primary">Xem dự án</a>
+                <a href="#contact" class="btn btn-outline">Liên hệ</a>
+            </div>
+            <div class="contact-icons">
+                <a href="mailto:dangnghia03052003@gmail.com" class="contact-icon" title="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+                <a href="https://www.facebook.com/minhnghiatb/" class="contact-icon" target="_blank" title="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://gitlab.com/nghiadmhe171283" class="contact-icon" target="_blank" title="GitLab">
+                    <i class="fab fa-gitlab"></i>
+                </a>
+                <a href="https://github.com/tubm03" class="contact-icon" target="_blank" title="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <h2 class="section-title">Về tôi</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>FPT University</h3>
+                        <div class="timeline-date">08/2021 - Nay</div>
+                        <p>Kỹ thuật Phần mềm | GPA: 3.2/4</p>
+                        <p style="margin-top: 10px; opacity: 0.8;">
+                            Học tập và phát triển kỹ năng lập trình, thiết kế hệ thống, 
+                            và bảo mật ứng dụng. Tham gia các dự án thực tế với doanh nghiệp.
+                        </p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>PortSwigger Web Security Academy</h3>
+                        <div class="timeline-date">11/2024 - Nay</div>
+                        <p>✓ 60+ bài lab về SQL Injection, XSS, CSRF, SSRF, XXE</p>
+                        <p>✓ OAuth vulnerabilities, Race conditions</p>
+                        <p>🎯 Mục tiêu: BSCP Certification Q1/2025</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-content">
+                        <h3>TryHackMe CTF Platform</h3>
+                        <div class="timeline-date">01/2025 - Nay</div>
+                        <p>✓ 40+ rooms: OWASP Top 10, Web Exploitation</p>
+                        <p>✓ Linux Privilege Escalation, Network Pentesting</p>
+                        <p>✓ CTF Challenges: Web, Binary, Forensics, Crypto</p>
+                    </div>
+                    <div class="timeline-dot"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+        <div class="container">
+            <h2 class="section-title">Kỹ năng chuyên môn</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3><i class="fas fa-bug"></i> Web Application Security</h3>
+                    <ul>
+                        <li>SQL Injection (Union, Blind, Time-based)</li>
+                        <li>Cross-Site Scripting (Reflected, Stored, DOM)</li>
+                        <li>CSRF & Authentication Bypass</li>
+                        <li>Access Control & IDOR</li>
+                        <li>SSRF & XXE</li>
+                        <li>OAuth 2.0 Security</li>
+                        <li>Business Logic Vulnerabilities</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3><i class="fas fa-search"></i> Penetration Testing</h3>
+                    <ul>
+                        <li>OWASP Testing Guide</li>
+                        <li>PTES Methodology</li>
+                        <li>Manual Testing & Exploitation</li>
+                        <li>Burp Suite Professional</li>
+                        <li>Nmap & Nessus</li>
+                        <li>Vulnerability Assessment</li>
+                        <li>Technical Report Writing</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3><i class="fas fa-laptop-code"></i> Developer Background</h3>
+                    <ul>
+                        <li>Source Code Analysis</li>
+                        <li>Java (JSP/Servlet, Spring)</li>
+                        <li>SAP ABAP Development</li>
+                        <li>Database & SQL Optimization</li>
+                        <li>Secure Coding Practices</li>
+                        <li>Git, Docker, Linux</li>
+                        <li>API Development & Security</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3><i class="fas fa-tools"></i> Tools & Technologies</h3>
+                    <ul>
+                        <li>Burp Suite Professional</li>
+                        <li>Nmap & NSE Scripting</li>
+                        <li>Nessus Vulnerability Scanner</li>
+                        <li>Acunetix Web Scanner</li>
+                        <li>SQL Server & PostgreSQL</li>
+                        <li>HTML/CSS/JavaScript</li>
+                        <li>Docker & Linux Administration</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section class="section" id="experience">
+        <div class="container">
+            <h2 class="section-title">Kinh nghiệm làm việc</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>Baby Shop Online System</h3>
+                        <p>Back-end Developer (Team Leader)</p>
+                        <p style="opacity: 0.8; font-size: 0.9em;">04/2024 - 08/2024</p>
+                    </div>
+                    <div class="project-body">
+                        <p><strong>Dự án:</strong> Hệ thống thương mại điện tử phục vụ 1000+ người dùng</p>
+                        
+                        <p style="margin-top: 15px; color: var(--accent);"><strong>Security Highlights:</strong></p>
+                        <ul>
+                            <li>Phát hiện & fix CSRF trong OAuth 2.0 callback</li>
+                            <li>Khắc phục 15+ SQL Injection vulnerabilities</li>
+                            <li>Triển khai secure session management</li>
+                            <li>Tích hợp VNPay với signature verification</li>
+                            <li>Áp dụng XSS prevention & CSP headers</li>
+                        </ul>
+
+                        <div class="tech-tags">
+                            <span class="tech-tag">Java</span>
+                            <span class="tech-tag">JSP/Servlet</span>
+                            <span class="tech-tag">SQL Server</span>
+                            <span class="tech-tag">OAuth 2.0</span>
+                            <span class="tech-tag">VNPay API</span>
+                        </div>
+
+                        <a href="https://gitlab.com/nghiadmhe171283/g6_se1849sap_swp391" class="project-link" target="_blank">
+                            <i class="fab fa-gitlab"></i> View Project <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3>SAP Fiori Recruitment App</h3>
+                        <p>Application Developer</p>
+                        <p style="opacity: 0.8; font-size: 0.9em;">09/2024 - 12/2024</p>
+                    </div>
+                    <div class="project-body">
+                        <p><strong>Dự án:</strong> Số hóa quy trình tuyển dụng cho DN 500+ nhân sự</p>
+                        
+                        <p style="margin-top: 15px; color: var(--accent);"><strong>Enterprise Security:</strong></p>
+                        <ul>
+                            <li>Thiết kế ma trận phân quyền đa cấp</li>
+                            <li>Bảo vệ sensitive data (lương, hồ sơ)</li>
+                            <li>Triển khai audit trail system</li>
+                            <li>Secure SAP module integration</li>
+                            <li>Least privilege & need-to-know principles</li>
+                        </ul>
+
+                        <div class="tech-tags">
+                            <span class="tech-tag">SAP HCM</span>
+                            <span class="tech-tag">SAPUI5</span>
+                            <span class="tech-tag">ABAP</span>
+                            <span class="tech-tag">Workflow</span>
+                        </div>
+
+                        <a href="https://github.com/tubm03/SAP490.git" class="project-link" target="_blank">
+                            <i class="fab fa-github"></i> View Project <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects/Research Section -->
+    <section class="section" id="projects">
+        <div class="container">
+            <h2 class="section-title">Nghiên cứu & Học tập</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3><i class="fas fa-graduation-cap"></i> PortSwigger Academy</h3>
+                    <ul style="margin-top: 20px;">
+                        <li><strong>60+ Labs hoàn thành</strong></li>
+                        <li>SQL Injection (All variants)</li>
+                        <li>XSS (Reflected, Stored, DOM)</li>
+                        <li>CSRF & Session Management</li>
+                        <li>Authentication & Access Control</li>
+                        <li>SSRF, XXE, Deserialization</li>
+                        <li>OAuth Flow Vulnerabilities</li>
+                        <li>Business Logic Flaws</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3><i class="fas fa-flag"></i> TryHackMe Platform</h3>
+                    <ul style="margin-top: 20px;">
+                        <li><strong>40+ Rooms completed</strong></li>
+                        <li>OWASP Top 10 Exploitation</li>
+                        <li>Web Application Pentesting</li>
+                        <li>Linux Privilege Escalation</li>
+                        <li>Network Reconnaissance</li>
+                        <li>CTF Challenges (Web, Binary)</li>
+                        <li>Digital Forensics</li>
+                        <li>Cryptography Basics</li>
+                    </ul>
+                </div>
+
+                <div class="skill-card">
+                    <h3><i class="fas fa-certificate"></i> Certifications</h3>
+                    <ul style="margin-top: 20px;">
+                        <li><strong>Target: BSCP Q1/2025</strong></li>
+                        <li>Burp Suite Certified Practitioner</li>
+                        <li style="margin-top: 15px;"><strong>Completed:</strong></li>
+                        <li>Coursera - Web Development</li>
+                        <li>Coursera - Software Lifecycle</li>
+                        <li>Coursera - UX Design</li>
+                        <li style="margin-top: 15px; opacity: 0.7;">English: B2 (Technical)</li>
+                        <li style="opacity: 0.7;">Japanese: Basic</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <h2 class="section-title">Liên hệ</h2>
+            <div class="contact-info-grid">
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <a href="mailto:dangnghia03052003@gmail.com">dangnghia03052003@gmail.com</a>
+                </div>
+
+                <div class="contact-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Điện thoại</h3>
+                    <a href="tel:0964597836">0964 597 836</a>
+                </div>
+
+                <div class="contact-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Địa chỉ</h3>
+                    <p>Cầu Giấy, Hà Nội</p>
+                </div>
+
+                <div class="contact-card">
+                    <i class="fab fa-facebook"></i>
+                    <h3>Facebook</h3>
+                    <a href="https://www.facebook.com/minhnghiatb/" target="_blank">@minhnghiatb</a>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 60px;">
+                <div class="cta-buttons">
+                    <a href="mailto:dangnghia03052003@gmail.com" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i> Gửi Email
+                    </a>
+                    <a href="https://gitlab.com/nghiadmhe171283/g6_se1849sap_swp391" class="btn btn-outline" target="_blank">
+                        <i class="fab fa-gitlab"></i> View GitLab
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll to Top Button -->
+    <div class="scroll-top" id="scrollTop">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Scroll Progress Bar
+        window.addEventListener('scroll', () => {
+            const scrollProgress = document.getElementById('scrollProgress');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const progress = (scrollTop / scrollHeight) * 100;
+            scrollProgress.style.width = progress + '%';
+
+            // Show/hide scroll to top button
+            const scrollTopBtn = document.getElementById('scrollTop');
+            if (scrollTop > 300) {
+                scrollTopBtn.classList.add('visible');
+            } else {
+                scrollTopBtn.classList.remove('visible');
+            }
+
+            // Navbar scroll effect
+            const navbar = document.getElementById('navbar');
+            if (scrollTop > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll to top button
+        document.getElementById('scrollTop').addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards
+        document.querySelectorAll('.skill-card, .project-card, .timeline-content, .contact-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease-out';
+            observer.observe(el);
+        });
+
+        // Add parallax effect to floating shapes
+        window.addEventListener('mousemove', (e) => {
+            const shapes = document.querySelectorAll('.floating-shape');
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+
+            shapes.forEach((shape, index) => {
+                const speed = (index + 1) * 20;
+                shape.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+            });
+        });
+
+        // Typing effect for subtitle
+        const subtitle = document.querySelector('.hero .subtitle');
+        const text = subtitle.textContent;
+        subtitle.textContent = '';
+        let i = 0;
+
+        function typeWriter() {
+            if (i < text.length) {
+                subtitle.textContent += text.charAt(i);
+                i++;
+                setTimeout(typeWriter, 100);
+            }
+        }
+
+        setTimeout(typeWriter, 1000);
+    </script>
+</body>
+</html>
